@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sasson Group</title>
+<meta name="description" content="Sasson Group — links.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14120F;
+    --surface: #201C17;
+    --text: #EDE9E1;
+    --text-inverse: #171410;
+    --muted: #98938A;
+    --border: rgba(237, 233, 225, 0.14);
+    --border-strong: rgba(237, 233, 225, 0.34);
+    --fill: #EDE9E1;
+    --fill-hover: #FBF9F4;
+    --accent: #C6A15B;
+    --accent-hover: #D6B471;
+    --accent-ink: #1C1811;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+
+  body {
+    font-family: 'Optima', 'Jost', 'Candara', 'Segoe UI', -apple-system, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(ellipse 900px 600px at 50% -10%, rgba(198, 161, 91, 0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 85% 100%, rgba(237, 233, 225, 0.05), transparent 55%),
+      var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 64px 22px 48px;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    margin-bottom: 20px;
+    background: rgba(237, 233, 225, 0.03);
+  }
+
+  .wordmark {
+    font-size: clamp(26px, 6vw, 30px);
+    letter-spacing: 0.01em;
+    font-weight: 400;
+    color: var(--text);
+    margin: 0 0 8px;
+    text-align: center;
+  }
+
+  .tagline {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 30px;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(180deg, var(--accent-hover), var(--accent));
+    color: var(--accent-ink);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(198, 161, 91, 0.22), 0 1px 0 rgba(255, 255, 255, 0.25) inset;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .cta:hover, .cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(198, 161, 91, 0.32), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    outline: none;
+  }
+
+  .cta svg { flex-shrink: 0; }
+
+  .divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 34px 0 22px;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .divider span {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: var(--fill);
+    color: var(--text-inverse);
+    font-family: inherit;
+    font-size: 15.5px;
+    letter-spacing: 0.005em;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), 0 6px 16px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .link-row .left {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .link-row .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: var(--text-inverse);
+  }
+
+  .link-row .chevron {
+    opacity: 0.45;
+    flex-shrink: 0;
+  }
+
+  a.link-row:hover, a.link-row:focus-visible {
+    transform: translateY(-2px);
+    background: var(--fill-hover);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), 0 10px 22px rgba(0, 0, 0, 0.24);
+    outline: none;
+  }
+
+  .link-row.disabled {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    box-shadow: none;
+    cursor: default;
+  }
+
+  .link-row.disabled .icon { color: var(--muted); }
+
+  .badge {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 4px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  footer {
+    margin-top: 52px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .avatar, .wordmark, .tagline, .cta, .divider, .link-row, footer {
+      animation: rise 0.5s ease both;
+    }
+    .wordmark { animation-delay: 0.03s; }
+    .tagline { animation-delay: 0.06s; }
+    .cta { animation-delay: 0.1s; }
+    .divider { animation-delay: 0.14s; }
+    .links .link-row:nth-child(1) { animation-delay: 0.17s; }
+    .links .link-row:nth-child(2) { animation-delay: 0.21s; }
+    .links .link-row:nth-child(3) { animation-delay: 0.25s; }
+    .links .link-row:nth-child(4) { animation-delay: 0.29s; }
+    .links .link-row:nth-child(5) { animation-delay: 0.33s; }
+    footer { animation-delay: 0.4s; }
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="shell">
+    <div class="avatar">SG</div>
+    <h1 class="wordmark">Sasson Group</h1>
+    <p class="tagline">Construction &amp; Real-Estate</p>
+
+    <a class="cta" href="https://innernetwork.app/card.html?id=16ADE31D-0C01-427F-94FE-03FA7BB185DF" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Start a Conversation
+    </a>
+
+    <div class="divider"><span>Links</span></div>
+
+    <div class="links">
+      <button type="button" class="link-row disabled" disabled title="Coming soon">
+        <span class="left">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>
+          </span>
+          Services
+        </span>
+        <span class="badge">Coming Soon</span>
+      </button>
+
+      <a class="link-row" href="https://innernetwork.app/download" target="_blank" rel="noopener">
+        <span class="left">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8.1 7.2 10.5 16M15.9 7.2 13.5 16M8.4 6h7.2"/></svg>
+          </span>
+          Inner Network App
+        </span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <button type="button" class="link-row disabled" disabled title="Coming soon">
+        <span class="left">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7"/><path d="M9 21v-4h6v4"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          </span>
+          Savvy — Hospitality Solutions
+        </span>
+        <span class="badge">Coming Soon</span>
+      </button>
+
+      <a class="link-row" href="https://fifoil.com" target="_blank" rel="noopener">
+        <span class="left">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10.5V20h14v-9.5"/><path d="M9 20v-6h6v6"/></svg>
+          </span>
+          FI-FOIL
+        </span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <a class="link-row" href="https://www.linkedin.com/in/jsassonv" target="_blank" rel="noopener">
+        <span class="left">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10v6.2M7.5 7.3v.01" stroke-linecap="round"/><path d="M11.2 16.2V10M11.2 12.6c0-1.5 1.1-2.6 2.5-2.6s2.3 1 2.3 2.6v3.6"/></svg>
+          </span>
+          LinkedIn
+        </span>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <footer>&copy; 2026 Sasson Group</footer>
+  </div>
+
+</body>
+</html>
