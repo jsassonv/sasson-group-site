@@ -53,13 +53,13 @@
     object-fit: cover;
     filter: blur(14px) saturate(1.05) brightness(0.85);
     transform: scale(1.08);
-    z-index: -2;
+    z-index: 0;
   }
 
   .bg-overlay {
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 1;
     background:
       radial-gradient(ellipse 900px 600px at 50% -10%, rgba(198, 161, 91, 0.14), transparent 60%),
       linear-gradient(180deg, rgba(20, 18, 15, 0.72) 0%, rgba(20, 18, 15, 0.86) 45%, rgba(20, 18, 15, 0.94) 100%);
@@ -70,6 +70,8 @@
   }
 
   .shell {
+    position: relative;
+    z-index: 2;
     width: 100%;
     max-width: 440px;
     display: flex;
